@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+
+						<img class="mb-2" alt="" style="width: 10%;"
+							th:src="@{/img/form.png}">
+
+						<h1 class="text-center">Register Here !!</h1>
+
+
+						<form th:action="@{/do_register}" method="post"
+							th:object="${user}">
+
+							<!-- name field-->
+							<div class="mb-3">
+								<label for="name_field" class="form-label">Your name</label> <input
+									name="name" type="text" class="form-control" id="name_field"
+									aria-describedby="emailHelp" placeholder="Enter name here"
+									th:value="${user.name}"
+									th:classappend="${#fields.hasErrors('name')?'is-invalid':''}">
+
+								<div th:each="e : ${#fields.errors('name')}" th:text="${e}"
+									id="validationServer03Feedback" class="invalid-feedback">
+								</div>
+							</div>
+
+
+							<!-- email field-->
+							<div class="mb-3">
+								<label for="email_field" class="form-label">Your email</label> <input
+									name="email" type="text" class="form-control" id="email_field"
+									aria-describedby="emailHelp" placeholder="Enter email here"
+									th:value="${user.email}"
+									th:classappend="${#fields.hasErrors('email')?'is-invalid':''}">
+								<div th:each="e : ${#fields.errors('email')}" th:text="${e}"
+									id="validationServer03Feedback" class="invalid-feedback">
+								</div>
+								
+								<div class="text-danger" th:if="${error != null}" th:text="${error}">
+									<!-- This block will only be displayed if 'myVariable' is not null -->
+								</div>
+							</div>
+
+							<!-- password field-->
+							<div class="mb-3">
+								<label for="password_field" class="form-label">Your
+									password</label> <input name="password" type="password"
+									class="form-control" id="password_field"
+									aria-describedby="emailHelp" th:value="${user.password}"
+									placeholder="Enter password here"
+									th:classappend="${#fields.hasErrors('password')?'is-invalid':''}">
+								<div th:each="e : ${#fields.errors('password')}" th:text="${e}"
+									id="validationServer03Feedback" class="invalid-feedback">
+								</div>
+							</div>
+
+
+							<!-- About field-->
+
+							<div class="form-group">
+								<textarea class="form-control" name="About"
+									placeholder="Enter Something yourself" id="floatingTextarea2"
+									th:text="${user.About}" rows="7"
+									th:classappend="${#fields.hasErrors('About')?'is-invalid':''}"></textarea>
+								<div th:each="e : ${#fields.errors('About')}" th:text="${e}"
+									id="validationServer03Feedback" class="invalid-feedback">
+								</div>
+							</div>
+
+
+							<!-- terms & condition checkbox field-->
+							<div class="mb-3 form-check mt-3">
+								<input type="checkbox" class="form-check-input" name="agreed"
+									id="checkbox"
+									th:classappend="${#fields.hasErrors('agreed')?'is-invalid':''}">
+								<label class="form-check-label" for="checkbox">Accept
+									terms and condition</label>
+								<div th:each="e : ${#fields.errors('agreed')}" th:text="${e}"
+									id="validationServer03Feedback" class="invalid-feedback">
+								</div>
+							</div>
+
+							<div class="container text-center">
+								<button type="submit" class="btn bg-primary text-white m-2">Submit</button>
+								<button type="reset" class="btn bg-warning text-white m-2">Reset</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+</body>
+</html>

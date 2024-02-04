@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+
+						<img class="mb-2" alt="" style="width: 100%;"
+							th:src="@{https://myecomz.com/en/img/emails/51-merchant-6-registration.png}">
+
+						<form th:action="@{/}">
+							<center>
+								<button type="submit" class="btn bg-primary text-white m-2">Done</button>
+							</center>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+</body>
+</html>
